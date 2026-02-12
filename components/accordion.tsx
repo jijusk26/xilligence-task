@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -27,6 +28,10 @@ export function Accordion({
   titleStyle?: ViewStyle;
 }) {
   const isExpanded = useSharedValue(false);
+
+  useEffect(() => {
+    isExpanded.value = !isExpanded.value;
+  }, []);
 
   const toggleAccordion = () => {
     isExpanded.value = !isExpanded.value;

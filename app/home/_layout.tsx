@@ -3,6 +3,7 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import React from "react";
 import { Dimensions, ScrollView, StatusBar, View } from "react-native";
+import AllocationAnalysis from "./components/allocation-analysis";
 import FundManagers from "./components/fund-managers";
 const { height, width } = Dimensions.get("screen");
 
@@ -91,54 +92,11 @@ const HomeScreen = () => {
             <View></View>
           </View>
         </ThemedView>
-        <ThemedView
-          style={{
-            backgroundColor: "#fff",
-            height: height * 0.25,
-            marginHorizontal: 15,
-            borderRadius: 20,
-            overflow: "hidden",
-            padding: 10,
-            marginTop: 15,
-            borderWidth: 1,
-            borderColor: "#6666663a",
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 10,
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
-            >
-              <View style={{ padding: 10 }}>
-                <ThemedText style={{ color: "#000", fontSize: 12 }}>
-                  Equity
-                </ThemedText>
-              </View>
-              <View style={{ padding: 10 }}>
-                <ThemedText style={{ color: "#000", fontSize: 12 }}>
-                  Equity
-                </ThemedText>
-              </View>
-              <View style={{ padding: 10 }}>
-                <ThemedText style={{ color: "#000", fontSize: 12 }}>
-                  Equity
-                </ThemedText>
-              </View>
-            </View>
-            <View></View>
-          </View>
-        </ThemedView>
         <Accordion
           title={"Allocation Analysis"}
           style={{ marginHorizontal: 15 }}
         >
-          <FundManagers />
+          <AllocationAnalysis />
         </Accordion>
         <Accordion title={"Fund Manager"} style={{ marginHorizontal: 15 }}>
           <FundManagers />
