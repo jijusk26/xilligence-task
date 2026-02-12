@@ -1,50 +1,195 @@
-# Welcome to your Expo app 👋
+# Mutual Fund Scheme Details - React Native Application
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A comprehensive mutual fund scheme details screen built with React Native (Expo) and TypeScript, featuring interactive charts, accordion sections, and full internationalization support.
 
-## Get started
+## 🚀 Quick Start
 
-1. Install dependencies
+### Prerequisites
+
+- Node.js (v16 or higher)
+- Yarn or npm
+- Expo CLI
+- iOS Simulator (Mac) or Android Emulator
+
+### Installation
+
+1. **Clone the repository**
 
    ```bash
-   npm install
+   cd xilligence-task
    ```
 
-2. Start the app
+2. **Install dependencies**
 
    ```bash
-   npx expo start
+   yarn install
    ```
 
-In the output, you'll find options to open the app in a
+3. **Start the development server**
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   yarn  start
+   or 
+   yarn android
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. **Run on device/emulator**
+   - Press `i` for iOS Simulator
+   - Press `a` for Android Emulator
+   - Scan QR code with Expo Go app on physical device
 
-## Get a fresh project
-
-When you're ready, run:
+### Clear Cache (if needed)
 
 ```bash
-npm run reset-project
+yarn start --clear
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📁 Project Architecture
 
-## Learn more
+### Folder Structure
 
-To learn more about developing your project with Expo, look at the following resources:
+```
+xilligence-task/
+├── app/                          # Expo Router screens
+│   ├── _layout.tsx              # Root layout with navigation
+│   ├── home/                    # Home screen module
+│   │   ├── _layout.tsx         # Scheme details screen
+│   │   └── components/         # Feature-specific components
+│   │       ├── allocation-analysis.tsx
+│   │       ├── analytics.tsx
+│   │       ├── fund-managers.tsx
+│   │       ├── holding-analysis.tsx
+│   │       ├── mutual-fund-info.tsx
+│   │       ├── return-analysis.tsx
+│   │       ├── return-calculator.tsx
+│   │       ├── returns.tsx
+│   │       ├── riskometer.tsx
+│   │       └── scheme-info.tsx
+│   └── (tabs)/                 # Tab navigation structure
+│
+├── components/                  # Reusable UI components
+│   ├── accordion.tsx           # Collapsible section component
+│   ├── pie-chart.tsx           # Skia-based doughnut chart
+│   ├── bar-chart.tsx           # Animated bar chart
+│   ├── line-chart.tsx          # Skia-based line chart (NAV)
+│   ├── button.tsx              # Themed button component
+│   ├── app-bar.tsx             # Header component
+│   └── ui/                     # Atomic UI components
+│
+├── config/                      # Configuration files
+│   └── i18n.config.ts          # i18n initialization
+│
+├── constants/                   # App constants
+│   ├── colors.ts               # Color palette
+│   └── theme.ts                # Theme configuration
+│
+├── data/                        # Local data storage
+│   └── data.json               # Mutual fund scheme data
+│
+├── helpers/                     # Utility functions
+│   ├── date.ts                 # Date formatting utilities
+│   └── name.ts                 # Name processing helpers
+│
+├── hooks/                       # Custom React hooks
+│   ├── use-translation.ts      # i18n translation hook
+│   ├── use-color-scheme.ts     # Theme management
+│   └── use-theme-color.ts      # Dynamic theming
+│
+├── locales/                     # Internationalization
+│   └── en.json                 # English translations
+│
+├── types/                       # TypeScript definitions
+│   └── mutual-funds.ts         # Data type definitions
+│
+├── package.json
+├── tsconfig.json
+├── app.json                    # Expo configuration
+└── README.md
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Component Architecture
 
-## Join the community
+#### 1. **Screen Level** (`app/home/_layout.tsx`)
 
-Join our community of developers creating universal apps.
+- Main container for Scheme Details screen
+- Manages data fetching and state
+- Orchestrates all child components
+- Handles scroll behavior
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+#### 2. **Feature Components** (`app/home/components/`)
+
+Each component is self-contained with:
+
+- Local state management
+- Props-based data flow
+- Localized text
+- Responsive styling
+
+#### 3. **Reusable Components** (`components/`)
+
+- Generic, application-agnostic
+- Highly configurable via props
+- Reanimated-based animations
+- Skia-powered charts
+
+#### 4. **Data Flow**
+
+```
+data.json → Screen (_layout.tsx) → Feature Components → UI Components
+              ↓
+         Localization (i18n)
+```
+
+## 🛠 Technical Stack
+
+### Core Technologies
+
+- **React Native**: v0.78.4 (via Expo)
+- **Expo SDK**: v54.0.33
+- **TypeScript**: v5.9.2
+- **Expo Router**: v6.0.23 (File-based routing)
+
+### Supported Languages
+
+- English (en) - Default
+- Structure ready for Spanish (es) and French (fr)
+
+## ⏱️ Development Timeline
+
+**Total Development Time: ~12 hours**
+
+
+### Development Build
+
+```bash
+npx expo start
+```
+
+### Production Build (EAS)
+
+```bash
+# Install EAS CLI
+npm install -g eas-cli
+
+# Login to Expo
+eas login
+
+# Configure build
+eas build:configure
+
+# Create iOS build
+eas build --platform ios
+
+# Create Android build
+eas build --platform android
+```
+
+## 🚢 Deployment
+
+### Expo Updates (OTA)
+
+```bash
+eas update --branch production
+```
+
+**Built with ❤️ using React Native & Expo**
