@@ -4,4 +4,7 @@ export const Colors = {
   moderate: "#ffdc00",
   moderate_high: "#fa7f00",
   high: "#ff375f",
+  disabled: "#e2ece7",
+  primaryText: "#0000000",
+  background: "#ffffff",
 };

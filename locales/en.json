@@ -27,5 +27,10 @@
     "moderatly_high": "Moderatly High",
     "high": "Very High",
     "info": "investors must understand that their investment will be at"
+  },
+  "return_analysis": {
+    "title": "Return Analysis",
+    "point_to_point": "Point to Point",
+    "sip_return": "SIP Returns"
   }
 }

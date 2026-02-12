@@ -1,11 +1,13 @@
 import { Accordion } from "@/components/accordion";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import { Colors } from "@/constants/colors";
 import useTranslation from "@/hooks/use-translation";
 import React from "react";
 import { Dimensions, ScrollView, StatusBar, View } from "react-native";
 import AllocationAnalysis from "./components/allocation-analysis";
 import FundManagers from "./components/fund-managers";
+import ReturnAnalysis from "./components/return-analysis";
 import RiskoMeter from "./components/riskometer";
 const { height, width } = Dimensions.get("screen");
 
@@ -20,7 +22,7 @@ const HomeScreen = () => {
     >
       <ThemedView
         style={{
-          backgroundColor: "green",
+          backgroundColor: Colors.primary,
           height: 50 + StatusBar.currentHeight!,
           paddingTop: StatusBar.currentHeight,
           justifyContent: "center",
@@ -44,7 +46,7 @@ const HomeScreen = () => {
       >
         <ThemedView
           style={{
-            backgroundColor: "green",
+            backgroundColor: Colors.primary,
             height: height * 0.25,
             borderBottomLeftRadius: 40,
             borderBottomRightRadius: 40,
@@ -96,7 +98,58 @@ const HomeScreen = () => {
           </View>
         </ThemedView>
         <Accordion
-          title={"Allocation Analysis"}
+          title={t("return_analysis.title")}
+          style={{ marginHorizontal: 15 }}
+        >
+          <ReturnAnalysis
+            lumpsumData={[
+              {
+                month: "3M",
+                percentage: 0.65,
+              },
+              {
+                month: "6M",
+                percentage: 6.22,
+              },
+              {
+                month: "1Y",
+                percentage: 16.56,
+              },
+              {
+                month: "3Y",
+                percentage: 25.84,
+              },
+              {
+                month: "MAX",
+                percentage: 19.26,
+              },
+            ]}
+            sipData={[
+              {
+                month: "3M",
+                percentage: "8.38",
+              },
+              {
+                month: "6M",
+                percentage: "9.70",
+              },
+              {
+                month: "1Y",
+                percentage: "17.26",
+              },
+              {
+                month: "3Y",
+                percentage: "19.34",
+              },
+              {
+                month: "MAX",
+                percentage: "22.05",
+              },
+            ]}
+          />
+        </Accordion>
+        <Accordion
+          title={t("allocation.title")}
           style={{ marginHorizontal: 15 }}
         >
           <AllocationAnalysis />
