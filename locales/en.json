@@ -46,5 +46,25 @@
     "aum": "AUM",
     "objective": "Objective",
     "inclusive_gst": "inclusive of GST"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "beta": "Beta",
+    "betaDescription": "Slightly less volatile than the market",
+    "std_deviation": "Std. Deviation",
+    "sharp_ratio": "Sharpe Ratio",
+    "alpha": "Alpha",
+    "sort_ratio": "Sortino Ratio",
+    "down_capture": "Down Capture",
+    "upcapture": "Up Capture",
+    "info_ratio": "Information Ratio",
+    "std_deviation_description": "Moderate volatility compared to peers",
+    "sharp_ratio_description": "Strong risk-adjusted returns",
+    "alpha_description": "Reflects how much a fund has outperformed its benchmark.",
+    "sort_ratio_description": "Good downside protection with strong return profile",
+    "down_capture_description": "Falls less than the market in downturns",
+    "std_deviation2_description": "Very low volatility, indicating highly stable and consistent performance.",
+    "upcapture_description": "Captures almost all upside of the market.",
+    "info_ratio_description": "Reasonably consistent in generating alpha over benchmark."
   }
 }

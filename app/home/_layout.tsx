@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 import { Dimensions, ScrollView, StatusBar, View } from "react-native";
 import data from "../../data/data.json";
 import AllocationAnalysis from "./components/allocation-analysis";
+import Analytics from "./components/analytics";
 import FundManagers from "./components/fund-managers";
 import ReturnAnalysis from "./components/return-analysis";
 import RiskoMeter from "./components/riskometer";
@@ -114,6 +115,12 @@ const HomeScreen = () => {
             lumpsumData={mfScheme?.lumpsum_return || []}
             sipData={mfScheme?.sip_returns || []}
           />
+        </Accordion>
+        <Accordion
+          title={t("analytics.title")}
+          style={{ marginHorizontal: 15 }}
+        >
+          <Analytics data={mfScheme?.analytics_data} />
         </Accordion>
         <Accordion
           title={t("allocation.title")}
