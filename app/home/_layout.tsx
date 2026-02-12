@@ -5,13 +5,15 @@ import { Colors } from "@/constants/colors";
 import useTranslation from "@/hooks/use-translation";
 import { MfScheme } from "@/types/mutual-funds";
 import React, { useEffect, useState } from "react";
-import { Dimensions, ScrollView, StatusBar, View } from "react-native";
+import { Dimensions, ScrollView, StatusBar } from "react-native";
 import data from "../../data/data.json";
 import AllocationAnalysis from "./components/allocation-analysis";
 import Analytics from "./components/analytics";
 import FundManagers from "./components/fund-managers";
 import HoldingAnalysis from "./components/holding-analysis";
+import MutualFundInfo from "./components/mutual-fund-info";
 import ReturnAnalysis from "./components/return-analysis";
+import Returns from "./components/returns";
 import RiskoMeter from "./components/riskometer";
 import SchemeInfo from "./components/scheme-info";
 const { height, width } = Dimensions.get("screen");
@@ -70,44 +72,15 @@ const HomeScreen = () => {
         <ThemedView
           style={{
             backgroundColor: "#fff",
-            height: height * 0.25,
             marginHorizontal: 15,
             elevation: 5,
             borderRadius: 20,
             overflow: "hidden",
-            padding: 10,
           }}
         >
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 10,
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <View
-              style={{ flexDirection: "row", gap: 10, alignItems: "center" }}
-            >
-              <View style={{ padding: 10 }}>
-                <ThemedText style={{ color: "#000", fontSize: 12 }}>
-                  Equity
-                </ThemedText>
-              </View>
-              <View style={{ padding: 10 }}>
-                <ThemedText style={{ color: "#000", fontSize: 12 }}>
-                  Equity
-                </ThemedText>
-              </View>
-              <View style={{ padding: 10 }}>
-                <ThemedText style={{ color: "#000", fontSize: 12 }}>
-                  Equity
-                </ThemedText>
-              </View>
-            </View>
-            <View></View>
-          </View>
+          <MutualFundInfo data={mfScheme} />
         </ThemedView>
+        <Returns navData={mfScheme?.nav_json || []} />
         <Accordion
           title={t("return_analysis.title")}
           style={{ marginHorizontal: 15 }}

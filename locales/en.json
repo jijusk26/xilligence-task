@@ -74,5 +74,13 @@
     "security_name": "Security Name",
     "value": "Value (Mn)",
     "holding": " Holding %"
+  },
+  "fund_info": {
+    "nav": "NAV",
+    "one_year_return": "1 Yr Return",
+    "one_year_benchmark_return": "1 Yr Benchmark Return",
+    "benchmark_index": "Benchmark Index",
+    "value_research_rating": "Value Research Rating",
+    "resilent": "RESILENT"
   }
 }
