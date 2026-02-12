@@ -1,3 +1,4 @@
+import LineChart, { LineChartDataPoint } from "@/components/line-chart";
 import { Colors } from "@/constants/colors";
 import useTranslation from "@/hooks/use-translation";
 import { MfScheme, NavHistory } from "@/types/mutual-funds";
@@ -11,7 +12,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { LineChart } from "react-native-gifted-charts";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const CHART_WIDTH = SCREEN_WIDTH - 60;
@@ -48,14 +48,13 @@ const Returns: React.FC<ReturnsProps> = ({ navData, fund }) => {
     return navData.filter((item) => moment(item.nav_date).isAfter(cutoffDate));
   }, [selectedPeriod, navData]);
 
-  const chartData = useMemo(() => {
+  const chartData: LineChartDataPoint[] = useMemo(() => {
     if (!filteredData || filteredData.length === 0) return [];
 
     return filteredData.map((item) => ({
       value: item.nav,
       date: item.nav_date,
       label: moment(item.nav_date).format("DD MMM"),
-      labelComponent: () => <></>,
     }));
   }, [filteredData]);
 
@@ -133,24 +132,19 @@ const Returns: React.FC<ReturnsProps> = ({ navData, fund }) => {
               data={chartData}
               width={CHART_WIDTH}
               height={200}
-              spacing={chartData.length > 50 ? 2 : 10}
-              thickness={2.5}
-              color={Colors.primary}
-              startFillColor={Colors.primary}
-              endFillColor="#FFFFFF"
-              startOpacity={0.25}
-              endOpacity={0.15}
-              initialSpacing={0}
-              noOfSections={5}
-              yAxisColor="transparent"
-              xAxisColor="transparent"
-              hideDataPoints
-              textColor="#999"
-              textFontSize={10}
-              hideRules
-              areaChart
-              hideYAxisText
-              hideAxesAndRules
+              lineColor={Colors.primary}
+              gradientColors={["#6fa28740", "#6fa28710"]}
+              strokeWidth={2.5}
+              onPointSelected={(point) => {
+                if (point) {
+                  setSelectedPoint({
+                    value: point.value,
+                    date: point.date,
+                  });
+                } else {
+                  setSelectedPoint(null);
+                }
+              }}
             />
           </View>
         </View>

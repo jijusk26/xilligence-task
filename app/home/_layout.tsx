@@ -93,7 +93,10 @@ const HomeScreen = () => {
         >
           <SchemeInfo schemeData={mfScheme} />
         </Accordion>
-        <Accordion title={"Fund Manager"} style={{ marginHorizontal: 15 }}>
+        <Accordion
+          title={t("fundManager.title")}
+          style={{ marginHorizontal: 15 }}
+        >
           <FundManagers fundmanagers={mfScheme?.fund_managers || []} />
         </Accordion>
         {mfScheme && <ReturnCalculator fund={mfScheme} />}
