@@ -36,7 +36,11 @@
   "return_analysis": {
     "title": "Return Analysis",
     "point_to_point": "Point to Point",
-    "sip_return": "SIP Returns"
+    "sip_return": "SIP Returns",
+    "return": "return",
+    "rating": "Rating",
+    "min_one_time_amount": "Min One Time Amount",
+    "min_sip_amount": "Min SIP Amount"
   },
   "scheme_info": {
     "title": "Scheme Info",

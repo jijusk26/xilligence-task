@@ -51,7 +51,9 @@ const HomeScreen = () => {
         <ThemedView style={styles.infoContainer}>
           <MutualFundInfo data={mfScheme} />
         </ThemedView>
-        <Returns navData={mfScheme?.nav_json || []} />
+        {mfScheme && (
+          <Returns navData={mfScheme?.nav_json || []} fund={mfScheme} />
+        )}
         <Accordion
           title={t("return_analysis.title")}
           style={{ marginHorizontal: 15 }}

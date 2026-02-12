@@ -37,7 +37,7 @@ const RiskoMeter = ({ risk }: { risk: string }) => {
     <View style={styles.container}>
       <View style={{ flexDirection: "row" }}>
         {riskometerData.map((rm) => (
-          <View style={styles.colorWrapper}>
+          <View style={styles.colorWrapper} key={rm.color}>
             <View style={{ height: 14, backgroundColor: rm.color }}></View>
             <View style={styles.alignCenter}>
               <Text style={styles.riskText}>{rm.label}</Text>
