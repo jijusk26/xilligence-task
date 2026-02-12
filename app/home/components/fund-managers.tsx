@@ -1,10 +1,12 @@
 import { formatDate, getYearDifference } from "@/helpers/date";
 import { avatarName } from "@/helpers/name";
+import useTranslation from "@/hooks/use-translation";
 import { FundManager } from "@/types/mutual-funds";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 const FundManagers = ({ fundmanagers }: { fundmanagers: FundManager[] }) => {
+  const { t } = useTranslation();
   return (
     <View style={styles.container}>
       {fundmanagers.map((fm) => {
@@ -18,7 +20,7 @@ const FundManagers = ({ fundmanagers }: { fundmanagers: FundManager[] }) => {
             <View style={styles.nameWrapper}>
               <Text style={styles.name}>{fm.person_name},</Text>
               <Text style={styles.date}>
-                {formatDate(fm.date_from)} - Present |{" "}
+                {formatDate(fm.date_from)} - {t("fundManager.present")} |{" "}
                 {getYearDifference(fm.date_from)}
               </Text>
             </View>

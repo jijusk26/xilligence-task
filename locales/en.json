@@ -22,7 +22,8 @@
     "title": "Allocation Analysis"
   },
   "fundManager": {
-    "title": "Fund Managers"
+    "title": "Fund Managers",
+    "present": "Present"
   },
   "riskometer": {
     "title": "Riskometer",

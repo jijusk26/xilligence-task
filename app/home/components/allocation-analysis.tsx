@@ -1,4 +1,5 @@
 import PieChart, { PieChartData } from "@/components/pie-chart";
+import useTranslation from "@/hooks/use-translation";
 import { AssetAllocation, SectorDetail } from "@/types/mutual-funds";
 import React, { useMemo, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -25,6 +26,7 @@ const AllocationAnalysis = ({
   AssetData: AssetAllocation[];
   SectorData: SectorDetail[];
 }) => {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<"asset" | "sector">("asset");
   const assetData: PieChartData[] = useMemo(() => {
     return AssetData.map((as, index) => {
@@ -50,8 +52,8 @@ const AllocationAnalysis = ({
     <View style={styles.container}>
       <View style={styles.tabWrqapper}>
         {[
-          { label: "Asset Class", value: "asset" },
-          { label: "Sector", value: "sector" },
+          { label: t("allocation.assetClass"), value: "asset" },
+          { label: t("allocation.sector"), value: "sector" },
         ].map((val) => {
           return (
             <TouchableOpacity
