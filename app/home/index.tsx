@@ -31,7 +31,7 @@ const HomeScreen = () => {
   const [mfScheme, setMfScheme] = useState<MfScheme>();
 
   useEffect(() => {
-    return setMfScheme(data.result[0].mf_schemes[0] as MfScheme);
+    setMfScheme(data.result[0].mf_schemes[0] as MfScheme);
   }, []);
 
   return (
