@@ -10,6 +10,7 @@ import data from "../../data/data.json";
 import AllocationAnalysis from "./components/allocation-analysis";
 import Analytics from "./components/analytics";
 import FundManagers from "./components/fund-managers";
+import HoldingAnalysis from "./components/holding-analysis";
 import ReturnAnalysis from "./components/return-analysis";
 import RiskoMeter from "./components/riskometer";
 import SchemeInfo from "./components/scheme-info";
@@ -130,6 +131,9 @@ const HomeScreen = () => {
             AssetData={mfScheme?.holding_asset_allocation || []}
             SectorData={mfScheme?.mf_sector_details || []}
           />
+        </Accordion>
+        <Accordion title={t("holding.title")} style={{ marginHorizontal: 15 }}>
+          <HoldingAnalysis holdingData={mfScheme?.holdings_data || []} />
         </Accordion>
         <Accordion
           title={t("riskometer.title")}

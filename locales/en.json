@@ -9,7 +9,9 @@
     "save": "Save",
     "delete": "Delete",
     "edit": "Edit",
-    "search": "Search"
+    "search": "Search",
+    "show_less": "Show Less",
+    "view_all_holdings": "View all Holdings"
   },
   "allocation": {
     "assetClass": "Asset Class",
@@ -66,5 +68,11 @@
     "std_deviation2_description": "Very low volatility, indicating highly stable and consistent performance.",
     "upcapture_description": "Captures almost all upside of the market.",
     "info_ratio_description": "Reasonably consistent in generating alpha over benchmark."
+  },
+  "holding": {
+    "title": "Holding Analysis",
+    "security_name": "Security Name",
+    "value": "Value (Mn)",
+    "holding": " Holding %"
   }
 }
