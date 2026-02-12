@@ -1,40 +1,10 @@
 import { formatDate, getYearDifference } from "@/helpers/date";
 import { avatarName } from "@/helpers/name";
+import { FundManager } from "@/types/mutual-funds";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const fundmanagers = [
-  {
-    date_from: "2025-08-29",
-    isin_code: "INF109KC1TQ6",
-    person_id: 2174,
-    person_name: "Sanket Gaidhani",
-    person_type: "Fund Manager",
-  },
-  {
-    date_from: "2024-01-22",
-    isin_code: "INF109KC1TQ6",
-    person_id: 1836,
-    person_name: "Darshil Dedhia",
-    person_type: "Fund Manager",
-  },
-  {
-    date_from: "2024-01-22",
-    isin_code: "INF109KC1TQ6",
-    person_id: 1889,
-    person_name: "Rohit Lakhotia",
-    person_type: "Fund Manager",
-  },
-  {
-    date_from: "2022-07-01",
-    isin_code: "INF109KC1TQ6",
-    person_id: 1802,
-    person_name: "Sharmila D'Silva",
-    person_type: "Fund Manager - Foreign Securities",
-  },
-];
-
-const FundManagers = () => {
+const FundManagers = ({ fundmanagers }: { fundmanagers: FundManager[] }) => {
   return (
     <View style={styles.container}>
       {fundmanagers.map((fm) => {

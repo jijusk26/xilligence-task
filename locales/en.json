@@ -32,5 +32,19 @@
     "title": "Return Analysis",
     "point_to_point": "Point to Point",
     "sip_return": "SIP Returns"
+  },
+  "scheme_info": {
+    "title": "Scheme Info",
+    "expense_ratio": "Expense Ratio",
+    "lock_period": "Lock-in Period",
+    "benchmark": "Benchmark",
+    "exit_load": "Exit Load",
+    "listing_date": "Listing Date",
+    "amc": "AMC",
+    "rta": "RTA",
+    "contact_details": "Contact Details",
+    "aum": "AUM",
+    "objective": "Objective",
+    "inclusive_gst": "inclusive of GST"
   }
 }

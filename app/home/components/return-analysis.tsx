@@ -19,7 +19,7 @@ const ReturnAnalysis = ({
     return sipData.map((d) => {
       return {
         label: d.month,
-        value: d.percentage,
+        value: Number(d.percentage),
       };
     });
   }, [sipData]);
@@ -28,7 +28,7 @@ const ReturnAnalysis = ({
     return lumpsumData.map((d) => {
       return {
         label: d.month,
-        value: d.percentage,
+        value: Number(d.percentage),
       };
     });
   }, [lumpsumData]);

@@ -1,80 +1,7 @@
 import PieChart, { PieChartData } from "@/components/pie-chart";
+import { AssetAllocation, SectorDetail } from "@/types/mutual-funds";
 import React, { useMemo, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-const AssetData = [
-  {
-    asset_name: "Equity",
-    asset_percentage: 92.95,
-  },
-  {
-    asset_name: "Cash",
-    asset_percentage: 7.05,
-  },
-];
-
-const SectorData = [
-  {
-    sector_code: 12195,
-    isin: "INF109KC1TQ6",
-    sector_name: "Materials",
-    percentage_assets: 26.31,
-  },
-  {
-    sector_code: 12118,
-    isin: "INF109KC1TQ6",
-    sector_name: "Financial",
-    percentage_assets: 18.24,
-  },
-  {
-    sector_code: 12267,
-    isin: "INF109KC1TQ6",
-    sector_name: "Technology",
-    percentage_assets: 11.51,
-  },
-  {
-    sector_code: 11924,
-    isin: "INF109KC1TQ6",
-    sector_name: "Consumer Discretionary",
-    percentage_assets: 10.69,
-  },
-  {
-    sector_code: 11964,
-    isin: "INF109KC1TQ6",
-    sector_name: "Industrials",
-    percentage_assets: 9.92,
-  },
-  {
-    sector_code: 12230,
-    isin: "INF109KC1TQ6",
-    sector_name: "Real Estate",
-    percentage_assets: 5,
-  },
-  {
-    sector_code: 12156,
-    isin: "INF109KC1TQ6",
-    sector_name: "Healthcare",
-    percentage_assets: 3.18,
-  },
-  {
-    sector_code: 12040,
-    isin: "INF109KC1TQ6",
-    sector_name: "Diversified",
-    percentage_assets: 2.51,
-  },
-  {
-    sector_code: 12079,
-    isin: "INF109KC1TQ6",
-    sector_name: "Energy & Utilities",
-    percentage_assets: 2.03,
-  },
-  {
-    sector_code: 12001,
-    isin: "INF109KC1TQ6",
-    sector_name: "Consumer Staples",
-    percentage_assets: 1.53,
-  },
-];
 
 const Colors = [
   "#FF6B6B",
@@ -91,7 +18,13 @@ const Colors = [
   "#9cd60b",
 ];
 
-const AllocationAnalysis = () => {
+const AllocationAnalysis = ({
+  AssetData,
+  SectorData,
+}: {
+  AssetData: AssetAllocation[];
+  SectorData: SectorDetail[];
+}) => {
   const [selected, setSelected] = useState<"asset" | "sector">("asset");
   const assetData: PieChartData[] = useMemo(() => {
     return AssetData.map((as, index) => {
@@ -101,7 +34,7 @@ const AllocationAnalysis = () => {
         label: as.asset_name,
       };
     });
-  }, []);
+  }, [AssetData]);
 
   const sectorData: PieChartData[] = useMemo(() => {
     return SectorData.map((as, index) => {
@@ -111,7 +44,7 @@ const AllocationAnalysis = () => {
         label: as.sector_name,
       };
     });
-  }, []);
+  }, [SectorData]);
 
   return (
     <View style={styles.container}>

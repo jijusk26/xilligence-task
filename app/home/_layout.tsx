@@ -3,16 +3,25 @@ import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { Colors } from "@/constants/colors";
 import useTranslation from "@/hooks/use-translation";
-import React from "react";
+import { MfScheme } from "@/types/mutual-funds";
+import React, { useEffect, useState } from "react";
 import { Dimensions, ScrollView, StatusBar, View } from "react-native";
+import data from "../../data/data.json";
 import AllocationAnalysis from "./components/allocation-analysis";
 import FundManagers from "./components/fund-managers";
 import ReturnAnalysis from "./components/return-analysis";
 import RiskoMeter from "./components/riskometer";
+import SchemeInfo from "./components/scheme-info";
 const { height, width } = Dimensions.get("screen");
 
 const HomeScreen = () => {
   const { t } = useTranslation();
+  const [mfScheme, setMfScheme] = useState<MfScheme>();
+
+  useEffect(() => {
+    return setMfScheme(data.result[0].mf_schemes[0] as MfScheme);
+  }, []);
+
   return (
     <ThemedView
       style={{
@@ -102,66 +111,33 @@ const HomeScreen = () => {
           style={{ marginHorizontal: 15 }}
         >
           <ReturnAnalysis
-            lumpsumData={[
-              {
-                month: "3M",
-                percentage: 0.65,
-              },
-              {
-                month: "6M",
-                percentage: 6.22,
-              },
-              {
-                month: "1Y",
-                percentage: 16.56,
-              },
-              {
-                month: "3Y",
-                percentage: 25.84,
-              },
-              {
-                month: "MAX",
-                percentage: 19.26,
-              },
-            ]}
-            sipData={[
-              {
-                month: "3M",
-                percentage: "8.38",
-              },
-              {
-                month: "6M",
-                percentage: "9.70",
-              },
-              {
-                month: "1Y",
-                percentage: "17.26",
-              },
-              {
-                month: "3Y",
-                percentage: "19.34",
-              },
-              {
-                month: "MAX",
-                percentage: "22.05",
-              },
-            ]}
+            lumpsumData={mfScheme?.lumpsum_return || []}
+            sipData={mfScheme?.sip_returns || []}
           />
         </Accordion>
         <Accordion
           title={t("allocation.title")}
           style={{ marginHorizontal: 15 }}
         >
-          <AllocationAnalysis />
+          <AllocationAnalysis
+            AssetData={mfScheme?.holding_asset_allocation || []}
+            SectorData={mfScheme?.mf_sector_details || []}
+          />
         </Accordion>
         <Accordion
           title={t("riskometer.title")}
           style={{ marginHorizontal: 15 }}
         >
-          <RiskoMeter risk="Very High" />
+          <RiskoMeter risk={mfScheme?.riskometer_value || "Low"} />
+        </Accordion>
+        <Accordion
+          title={t("scheme_info.title")}
+          style={{ marginHorizontal: 15 }}
+        >
+          <SchemeInfo schemeData={mfScheme} />
         </Accordion>
         <Accordion title={"Fund Manager"} style={{ marginHorizontal: 15 }}>
-          <FundManagers />
+          <FundManagers fundmanagers={mfScheme?.fund_managers || []} />
         </Accordion>
       </ScrollView>
     </ThemedView>
