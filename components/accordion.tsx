@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { Colors } from "@/constants/colors";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import {
   StyleSheet,
   Text,
@@ -29,13 +30,21 @@ export function Accordion({
 }) {
   const isExpanded = useSharedValue(false);
 
-  useEffect(() => {
-    isExpanded.value = !isExpanded.value;
-  }, []);
-
   const toggleAccordion = () => {
     isExpanded.value = !isExpanded.value;
   };
+
+  const iconRotation = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotate: withTiming(isExpanded.value ? "270deg" : "90deg", {
+            duration: 300,
+          }),
+        },
+      ],
+    };
+  });
 
   return (
     <View
@@ -55,6 +64,13 @@ export function Accordion({
         style={[styles.header, titleStyle]}
       >
         <Text style={styles.title}>{title}</Text>
+        <Animated.View style={iconRotation}>
+          <MaterialIcons
+            name="arrow-back-ios"
+            size={17}
+            color={Colors.primary}
+          />
+        </Animated.View>
       </TouchableOpacity>
       <AccordionItem
         isExpanded={isExpanded}

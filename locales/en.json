@@ -11,7 +11,10 @@
     "edit": "Edit",
     "search": "Search",
     "show_less": "Show Less",
-    "view_all_holdings": "View all Holdings"
+    "view_all_holdings": "View all Holdings",
+    "one_time": "One Time",
+    "start_sip": "Start SIP",
+    "scheme_details": "Scheme Details"
   },
   "allocation": {
     "assetClass": "Asset Class",
@@ -82,5 +85,15 @@
     "benchmark_index": "Benchmark Index",
     "value_research_rating": "Value Research Rating",
     "resilent": "RESILENT"
+  },
+  "return_calculator": {
+    "title": "Return Calculator",
+    "monthly_sip": "Monthly SIP",
+    "one_time": "One Time",
+    "monthly_sip_amount": "Monthly SIP Amount",
+    "investment_amount": "Investment Amount",
+    "select_duration": "Select Duration",
+    "total_investment": "Total Investment",
+    "would_have_become": "Would have become"
   }
 }

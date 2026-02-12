@@ -1,11 +1,18 @@
 import { Accordion } from "@/components/accordion";
-import { ThemedText } from "@/components/themed-text";
+import AppBar from "@/components/app-bar";
+import ThemedButton from "@/components/button";
 import { ThemedView } from "@/components/themed-view";
 import { Colors } from "@/constants/colors";
 import useTranslation from "@/hooks/use-translation";
 import { MfScheme } from "@/types/mutual-funds";
 import React, { useEffect, useState } from "react";
-import { Dimensions, ScrollView, StatusBar } from "react-native";
+import {
+  Dimensions,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  View,
+} from "react-native";
 import data from "../../data/data.json";
 import AllocationAnalysis from "./components/allocation-analysis";
 import Analytics from "./components/analytics";
@@ -13,6 +20,7 @@ import FundManagers from "./components/fund-managers";
 import HoldingAnalysis from "./components/holding-analysis";
 import MutualFundInfo from "./components/mutual-fund-info";
 import ReturnAnalysis from "./components/return-analysis";
+import ReturnCalculator from "./components/return-calculator";
 import Returns from "./components/returns";
 import RiskoMeter from "./components/riskometer";
 import SchemeInfo from "./components/scheme-info";
@@ -27,26 +35,8 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <ThemedView
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-      }}
-    >
-      <ThemedView
-        style={{
-          backgroundColor: Colors.primary,
-          height: 50 + StatusBar.currentHeight!,
-          paddingTop: StatusBar.currentHeight,
-          justifyContent: "center",
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
-        <ThemedText style={{ color: "#fff", fontSize: 20 }}>
-          Scheme Details
-        </ThemedText>
-      </ThemedView>
+    <ThemedView style={styles.container}>
+      <AppBar />
       <ScrollView
         style={{
           flex: 1,
@@ -57,27 +47,8 @@ const HomeScreen = () => {
           gap: 15,
         }}
       >
-        <ThemedView
-          style={{
-            backgroundColor: Colors.primary,
-            height: height * 0.25,
-            borderBottomLeftRadius: 40,
-            borderBottomRightRadius: 40,
-            position: "absolute",
-            top: -10,
-            left: 0,
-            right: 0,
-          }}
-        ></ThemedView>
-        <ThemedView
-          style={{
-            backgroundColor: "#fff",
-            marginHorizontal: 15,
-            elevation: 5,
-            borderRadius: 20,
-            overflow: "hidden",
-          }}
-        >
+        <ThemedView style={styles.fixedBackground}></ThemedView>
+        <ThemedView style={styles.infoContainer}>
           <MutualFundInfo data={mfScheme} />
         </ThemedView>
         <Returns navData={mfScheme?.nav_json || []} />
@@ -123,9 +94,56 @@ const HomeScreen = () => {
         <Accordion title={"Fund Manager"} style={{ marginHorizontal: 15 }}>
           <FundManagers fundmanagers={mfScheme?.fund_managers || []} />
         </Accordion>
+        {mfScheme && <ReturnCalculator fund={mfScheme} />}
       </ScrollView>
+      <View style={styles.buttonWrapper}>
+        <ThemedButton
+          title={t("common.one_time")}
+          style={{ backgroundColor: Colors.disabled }}
+          textStyle={{ color: Colors.primary }}
+        />
+        <ThemedButton title={t("common.start_sip")} />
+      </View>
     </ThemedView>
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  header: {
+    backgroundColor: Colors.primary,
+    height: 50 + StatusBar.currentHeight!,
+    paddingTop: StatusBar.currentHeight,
+    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  infoContainer: {
+    backgroundColor: "#fff",
+    marginHorizontal: 15,
+    elevation: 5,
+    borderRadius: 20,
+    overflow: "hidden",
+  },
+  fixedBackground: {
+    backgroundColor: Colors.primary,
+    height: height * 0.25,
+    borderBottomLeftRadius: 40,
+    borderBottomRightRadius: 40,
+    position: "absolute",
+    top: -10,
+    left: 0,
+    right: 0,
+  },
+  buttonWrapper: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
+    width: "100%",
+    padding: 14,
+  },
+});
 export default HomeScreen;
