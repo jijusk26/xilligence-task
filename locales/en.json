@@ -1,0 +1,31 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search"
+  },
+  "allocation": {
+    "assetClass": "Asset Class",
+    "sector": "Sector",
+    "title": "Allocation Analysis"
+  },
+  "fundManager": {
+    "title": "Fund Managers"
+  },
+  "riskometer": {
+    "title": "Riskometer",
+    "low": "Low",
+    "low_moderate": "Low to Moderate",
+    "moderate": "Moderate",
+    "moderatly_high": "Moderatly High",
+    "high": "Very High",
+    "info": "investors must understand that their investment will be at"
+  }
+}

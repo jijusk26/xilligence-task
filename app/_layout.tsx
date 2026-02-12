@@ -7,6 +7,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
+import "@/config/i18n.config";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 
 export const unstable_settings = {

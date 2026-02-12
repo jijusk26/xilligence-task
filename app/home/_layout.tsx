@@ -1,13 +1,16 @@
 import { Accordion } from "@/components/accordion";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import useTranslation from "@/hooks/use-translation";
 import React from "react";
 import { Dimensions, ScrollView, StatusBar, View } from "react-native";
 import AllocationAnalysis from "./components/allocation-analysis";
 import FundManagers from "./components/fund-managers";
+import RiskoMeter from "./components/riskometer";
 const { height, width } = Dimensions.get("screen");
 
 const HomeScreen = () => {
+  const { t } = useTranslation();
   return (
     <ThemedView
       style={{
@@ -97,6 +100,12 @@ const HomeScreen = () => {
           style={{ marginHorizontal: 15 }}
         >
           <AllocationAnalysis />
+        </Accordion>
+        <Accordion
+          title={t("riskometer.title")}
+          style={{ marginHorizontal: 15 }}
+        >
+          <RiskoMeter risk="Very High" />
         </Accordion>
         <Accordion title={"Fund Manager"} style={{ marginHorizontal: 15 }}>
           <FundManagers />
